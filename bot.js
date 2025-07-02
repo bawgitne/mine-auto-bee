@@ -74,7 +74,8 @@ async function startBot() {
             bot.pathfinder.setMovements(defaultMove);
 
             // --- Bắt đầu chuỗi hành động di chuyển ---
-
+            console.log('⏳ Chờ 6 giây...');
+            await wait(6000); // Đã sửa từ 2000 thành 6000
             // Bước 1: Di chuyển tới tọa độ (5, 100, 0)
             const firstTargetPos = new goals.GoalBlock(5, 100, 0);
             const arrivedFirst = await moveToGoal(bot, firstTargetPos, 'điểm đầu tiên');
@@ -119,14 +120,14 @@ async function startBot() {
         bot.on('error', err => console.error('⚠️ Lỗi bot:', err));
         bot.on('end', async (reason) => {
             console.log(`🔌 Bot đã ngắt kết nối. Lý do: ${reason}`);
-            console.log(`🔄 Đang thử kết nối lại sau ${RECONNECT_DELAY / 1000} giây...`);
-            await wait(RECONNECT_DELAY);
+            console.log(`🔄 Đang thử kết nối lại sau ${10000 / 1000} giây...`);
+            await wait(10000);
             createAndRunBot(); // Gọi lại hàm để khởi tạo và chạy bot
         });
     } catch (err) {
         console.error('❌ Không thể khởi động bot:', err);
-        console.log(`🔄 Thử kết nối lại sau ${RECONNECT_DELAY / 1000} giây do lỗi khởi tạo...`);
-        await wait(RECONNECT_DELAY);
+        console.log(`🔄 Thử kết nối lại sau ${10000 / 1000} giây do lỗi khởi tạo...`);
+        await wait(10000);
         createAndRunBot(); // Thử kết nối lại nếu có lỗi ngay từ đầu
     }
 }
