@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+npm-debug.log
+.env
+.DS_Store
+
+# Mineflayer/Prismarine related
+auth_cache/
+*.log
+
+# Operating System Files
+.DS_Store # macOS
+Thumbs.db # Windows
